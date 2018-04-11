@@ -12,3 +12,9 @@ def home(request):
     #context = Context({});
     #return HttpResponse(template.render(context));
     return HttpResponse(template.render());
+
+def results(request):
+    template = get_template("results.html")
+    #context = Context({});
+    #return HttpResponse(template.render(context));
+    return HttpResponse(template.render());
