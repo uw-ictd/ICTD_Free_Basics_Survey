@@ -6,23 +6,38 @@ from Survey.models import Answers
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_protect
 from Survey.forms import ResultsForm
-from django.forms import modelformset_factory
 
+# Rendering the home page, which will have a results form displayed. See SampleSurvey/templates/home.html
+# to see how the form is displayed. To change the display, edit that file. Read more about forms here:
+# https://docs.djangoproject.com/en/2.0/topics/forms/modelforms/
 @csrf_protect
 def home(request):
     form = ResultsForm()
     return render(request, "home.html", {'form': form})
 
+# Called when the submit button on the home page is pressed. Renders the results page unless there is an
+# issue with the form, in which case it renders an error page (both in SampleSurvey/templates). Most of
+# the code involves saving the user's answers in the database for future access. 
 def results(request):
     if (request.method == 'POST'):
-        print("GOT IT!!!")
-        res = Answers(q1='e', q2='e', q3='e', q4='e', username="")
         form = ResultsForm(request.POST)
         if (form.is_valid()):
-            form.save()
-            print("SAVED FORM")
+            res = form.save()
+            res.result = calculate_result(res)
+            res.save()
+            print("Saved answers with id {0} and username {1}".format(res.id, res.username))
         else:
-            print("INVALID FORM")
-            # TODO: render error page
-    template = get_template("results.html")
-    return HttpResponse(template.render());
+            print("Invalid form, not saved")
+            render(request, "error.html", {})
+    return render(request, "results.html", {'answers': res })
+
+# Calculates what the result should be, can be changed later for different logic/ answers
+def calculate_result(res):
+    if (res.q1 == 'a'):
+        return 'Husky'
+    elif (res.q1 == 'b'):
+        return 'Golden Retreiver'
+    elif (res.q1 == 'c'):
+        return 'Pug'
+    else:
+        return 'Poodle'
