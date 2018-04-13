@@ -1,6 +1,6 @@
 At survey home
 <form action="/results/" method="post">{% csrf_token %}
   <label for="username">Enter name: </label>
-  <input id="username" type="text" name="name_field" value="">
+  <input id="username" type="text" name="username" value="{{ current_username }}">
   <input type="submit" value="Get Results!">
 </form>

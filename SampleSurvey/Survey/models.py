@@ -9,6 +9,7 @@ class Answers(models.Model):
     q2 = models.CharField(max_length=1)
     q3 = models.CharField(max_length=1)
     q4 = models.CharField(max_length=1)
+    username = models.CharField(max_length=30)
     def get_result(self):
         if (self.q1 == 'e' or self.q2 == 'e' or self.q3 == 'e' or self.q4 == 'e'):
             return "Please answer all questions"
