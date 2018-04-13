@@ -2,16 +2,16 @@
 from __future__ import unicode_literals
 from django.template.loader import get_template
 from django.shortcuts import render
-
-# Create your views here.
+from Survey.models import Answers
 from django.http import HttpResponse
+from django.views.decorators.csrf import csrf_protect
 
+@csrf_protect
 def home(request):
-    # We'll prob have to put some database initialization stuff here
-    template = get_template("home.html")
-    #context = Context({});
-    #return HttpResponse(template.render(context));
-    return HttpResponse(template.render());
+    #template = get_template("home.html")
+    c = {}
+    #return HttpResonse(template.render())
+    return render(request, "home.html", c)
 
 def results(request):
     template = get_template("results.html")

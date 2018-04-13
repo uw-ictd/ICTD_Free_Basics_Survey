@@ -1,3 +1,6 @@
 At survey home
-<!-- Note: to get to results page, put in a button that links to the current url with '/results' on the end 
-(You can also get to results by running locally and adding '/results' in browser) -->
+<form action="/results/" method="post">{% csrf_token %}
+  <label for="username">Enter name: </label>
+  <input id="username" type="text" name="name_field" value="">
+  <input type="submit" value="Get Results!">
+</form>
