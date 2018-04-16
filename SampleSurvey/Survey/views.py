@@ -41,3 +41,6 @@ def calculate_result(res):
         return 'Pug'
     else:
         return 'Poodle'
+
+def error(request):
+    return render(request, "error.html", {})

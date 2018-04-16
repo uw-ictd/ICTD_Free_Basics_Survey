@@ -7,10 +7,11 @@ from django.db import models
 # This class holds the information we need from each user, that is, their answers for the 4
 # questions, their results, and their username
 class Answers(models.Model):
-    q1 = models.CharField(max_length=1, default='e')
-    q2 = models.CharField(max_length=1, default='e')
-    q3 = models.CharField(max_length=1, default='e')
-    q4 = models.CharField(max_length=1, default='e')
+    ANSWER_CHOICES = ( ('a', 'A'), ('b', 'B'), ('c', 'C'), ('d', 'D'),)
+    q1 = models.CharField(max_length=1, choices=ANSWER_CHOICES, default='')
+    q2 = models.CharField(max_length=1, choices=ANSWER_CHOICES, default='')
+    q3 = models.CharField(max_length=1, choices=ANSWER_CHOICES, default='')
+    q4 = models.CharField(max_length=1, choices=ANSWER_CHOICES, default='')
     result = models.CharField(max_length=20, default='Golden Retriever')    
     username = models.CharField(max_length=30, default='')
     def __str__(self):
