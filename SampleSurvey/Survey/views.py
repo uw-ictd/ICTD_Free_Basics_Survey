@@ -42,5 +42,9 @@ def calculate_result(res):
     else:
         return 'Poodle'
 
+def allResults(request):
+    all_results = Answers.objects.all()
+    return render(request, "allResults.html", {"all_results": all_results})
+
 def error(request):
     return render(request, "error.html", {})

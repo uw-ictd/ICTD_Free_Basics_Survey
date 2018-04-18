@@ -13,6 +13,6 @@ class Answers(models.Model):
     q3 = models.CharField(max_length=1, choices=ANSWER_CHOICES, default='')
     q4 = models.CharField(max_length=1, choices=ANSWER_CHOICES, default='')
     result = models.CharField(max_length=20, default='Golden Retriever')    
-    username = models.CharField(max_length=30, default='')
+    username = models.CharField(max_length=30, default='')    
     def __str__(self):
         return self.username
