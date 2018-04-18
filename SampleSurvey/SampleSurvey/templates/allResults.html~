@@ -1,4 +1,0 @@
-All Results
-{% for res in all_results %}
-</p> {{ res }} </p>
-{% endfor %}

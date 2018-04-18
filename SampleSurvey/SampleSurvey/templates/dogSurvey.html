@@ -1,0 +1,47 @@
+Welcome to our Suvey! Would you like to know what kind of puppy you are?
+<form action="/dogSurvey/results/" method="post">{% csrf_token %}
+{{ form.non_field_errors }}
+<div class="fieldWrapper">
+  {{ form.q1.errors }}
+  <label for="{{ form.q1.id_for_label }}">Question 1: What is your favorite kind of toy?</label>
+  <div>a) Ropes</div>
+  <div>b) Tennis Balls</div>
+  <div>c) Bones</div>
+  <div>d) Stuffed Animals</div>
+  {{ form.q1 }}
+</div>
+<div class="fieldWrapper">
+  {{ form.q2.errors }}
+  <label for="{{ form.q2.id_for_label }}">Question 2: What is your favorite activity?</label>
+  <div>a) Running</div>
+  <div>b) Getting a belly rub</div>
+  <div>c) Eating</div>
+  <div>d) Sleeping</div>
+  {{ form.q2 }}
+</div>
+<div class="fieldWrapper">
+  {{ form.q3.errors }}
+  <label for="{{ form.q3.id_for_label }}">Question 3: What is your favorite food?</label>
+  <div>a) Anything and everything</div>
+  <div>b) Whatever you're eating</div>
+  <div>c) Did someone say food?</div>
+  <div>d) Only the finest chicken is sufficient</div>
+  {{ form.q3 }}
+</div>
+<div class="fieldWrapper">
+  {{ form.q4.errors }}
+  <label for="{{ form.q4.id_for_label }}">Question 4: What is your ideal Saturday?</label>
+  <div>a) Running with my human in the Seattle rain</div>
+  <div>b) Swimming</div>
+  <div>c) Chasing other dogs at the dog park</div>
+  <div>d) Sleeping for 24 hours straight</div>
+  {{ form.q4 }}
+</div>
+<div class="fieldWrapper">
+  {{ form.username.errors }}
+  <label for="{{ form.username.id_for_label }}">What's your name?</label>
+  {{ form.username }}
+</div>
+<input type="submit" value="Get Results!">
+</form>
+

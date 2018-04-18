@@ -7,13 +7,16 @@ from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_protect
 from Survey.forms import ResultsForm
 
-# Rendering the home page, which will have a results form displayed. See SampleSurvey/templates/home.html
+def home(request):
+    return render(request, "home.html", {});
+
+# Rendering the survey page, which will have a results form displayed. See SampleSurvey/templates/home.html
 # to see how the form is displayed. To change the display, edit that file. Read more about forms here:
 # https://docs.djangoproject.com/en/2.0/topics/forms/modelforms/
 @csrf_protect
-def home(request):
+def dogSurvey(request):
     form = ResultsForm()
-    return render(request, "home.html", {'form': form})
+    return render(request, "dogSurvey.html", {'form': form})
 
 # Called when the submit button on the home page is pressed. Renders the results page unless there is an
 # issue with the form, in which case it renders an error page (both in SampleSurvey/templates). Most of
@@ -28,7 +31,6 @@ def results(request):
             print("Saved answers with id {0} and username {1}".format(res.id, res.username))
         else:
             print("Invalid form, not saved")
-            render(request, "error.html", {})
     return render(request, "results.html", {'answers': res })
 
 # Calculates what the result should be, can be changed later for different logic/ answers
@@ -45,6 +47,3 @@ def calculate_result(res):
 def allResults(request):
     all_results = Answers.objects.all()
     return render(request, "allResults.html", {"all_results": all_results})
-
-def error(request):
-    return render(request, "error.html", {})
