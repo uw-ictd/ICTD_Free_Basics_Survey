@@ -4,4 +4,5 @@ from django.contrib import admin
 
 urlpatterns = [ url(r'^$', views.survey1, name='survey1'),
                 url(r'basicInfo/', views.basicInfo, name='basicInfo'),
+                url(r'results/', views.results, name='results'),
 ]
