@@ -10,10 +10,10 @@ class Entry(models.Model):
                   ('e', 'Professional School'), ('f', 'PhD'), ('g', 'Postdoctorial'), )
     takenBefore = models.NullBooleanField(max_length=3, choices=YES_NO, blank=None, null=None, default=None)
     gender = models.CharField(max_length=7, choices=GENDER, default='')
-    age = models.PositiveSmallIntegerField()
+    age = models.PositiveSmallIntegerField(null=True)
     education = models.CharField(max_length=20, choices=EDUCATION, default='')
     glasses = models.NullBooleanField(max_length=3, choices=YES_NO, blank=None, null=None, default=None)
-    personalComputer = models.BooleanField()
+    personalComputer = models.NullBooleanField(null=None)
 
     # For confirmation form
     confirmation = models.BooleanField()

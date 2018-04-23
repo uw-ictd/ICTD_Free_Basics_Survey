@@ -10,26 +10,37 @@ from Survey1.forms import BasicInfoForm, ConfirmationForm
 def survey1(request):
     return render(request, "survey1.html", {})
 
-# Rendering the bsic info page
-@csrf_protect
-def basicInfo(request):
-    form = BasicInfoForm()
-    return render(request, "basicInfo.html", {"form": form})
-
 # Rendering the confirmation page
 @csrf_protect
 def confirmation(request):
     form = ConfirmationForm()
     return render(request, "confirmation.html", {"form": form})
 
-def results(request):
-#    if (request.method == 'POST'):
-#    form = ResultsForm(request.POST)
-#    if (form.is_valid()):
-#        res = form.save()
-#        res.result = calculate_result(res)
-#        res.save()
-#        print("Saved answers with id {0} and username {1}".format(res.id, res.username))
-#    else:
-#        print("Invalid form, not saved")
-    return render(request, "survey1Results.html", {})
+# Rendering the bsic info page
+@csrf_protect
+def basicInfo(request):
+    # This method should be called after the confirmation page is submitted
+    # Dealing with the results of the confirmation
+    if (request.method == 'POST'):
+        confForm = ConfirmationForm(request.POST)
+        if (confForm.is_valid()):
+            res = confForm.save()
+            print("Saved answers with id {0}".format(res.id))
+        else:
+            print("Invalid form, not saved")
+    # Rendering this page
+    form = BasicInfoForm()
+    return render(request, "basicInfo.html", {"form": form, "entry": res,})
+
+def results(request, id):
+    # Should be called after basicInfo. Adding info to database
+    entry = Entry.objects.get(pk=int(id))
+    if (request.method == 'POST'):
+        form = BasicInfoForm(request.POST, instance=entry)
+        if (form.is_valid()):
+            res = form.save()
+            print("Saved answers with id {0}".format(res.id,))
+        else:
+            print("Invalid form, not saved")
+    entries = Entry.objects.all()
+    return render(request, "survey1Results.html", {'entries': entries})
