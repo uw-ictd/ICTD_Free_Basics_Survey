@@ -2,7 +2,8 @@
 from __future__ import unicode_literals
 from django.db import models
 
-class basicInfo(models.Model):
+class Entry(models.Model):
+    # For basic info form
     GENDER = ((None, ''), ('F','Female'), ('M','Male'), ('O', 'Other'), )
     YES_NO = ((None,''), (True,'Yes'), (False, 'No'), )
     EDUCATION = ((None, ''), ('a', 'Pre-High School'), ('b', 'High School'), ('c', 'College'), ('d', 'Graduate School'),
@@ -13,3 +14,6 @@ class basicInfo(models.Model):
     education = models.CharField(max_length=20, choices=EDUCATION, default='')
     glasses = models.NullBooleanField(max_length=3, choices=YES_NO, blank=None, null=None, default=None)
     personalComputer = models.BooleanField()
+
+    # For confirmation form
+    confirmation = models.BooleanField()

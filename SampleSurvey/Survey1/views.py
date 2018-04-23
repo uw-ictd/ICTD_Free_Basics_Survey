@@ -2,21 +2,25 @@
 from __future__ import unicode_literals
 from django.template.loader import get_template
 from django.shortcuts import render
-from Survey1.models import basicInfo
+from Survey1.models import Entry
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_protect
-from Survey1.forms import BasicInfoForm
+from Survey1.forms import BasicInfoForm, ConfirmationForm
 
 def survey1(request):
     return render(request, "survey1.html", {})
 
-# Rendering the survey page, which will have a results form displayed. See SampleSurvey/templates/home.html
-# to see how the form is displayed. To change the display, edit that file. Read more about forms here:
-# https://docs.djangoproject.com/en/2.0/topics/forms/modelforms/
+# Rendering the bsic info page
 @csrf_protect
 def basicInfo(request):
     form = BasicInfoForm()
     return render(request, "basicInfo.html", {"form": form})
+
+# Rendering the confirmation page
+@csrf_protect
+def confirmation(request):
+    form = ConfirmationForm()
+    return render(request, "confirmation.html", {"form": form})
 
 def results(request):
 #    if (request.method == 'POST'):
