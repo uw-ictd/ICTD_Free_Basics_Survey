@@ -1,14 +1,17 @@
-Please read the following information carefully before proceeding.
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'style/survey.css' %}" />
 
-Why we are doing this research We are developing techniques to understand happiness from journal-style text.
+<header>Lab in the Wild</header>
+<body>
+<div>Please read the following information carefully before proceeding.</div>
+<div>Why we are doing this research We are developing techniques to understand happiness from journal-style text.
 What you will have to do You will recall recent events that made you happy, and write them down. You will find out the type of categories these events belong to.
-What you will get out of it You will learn a few tips on how to be happier based on the Science of Happiness. At the end of the study you will be able to compare your sources of happiness to those of others.
-Privacy and Data Collection Your responses will be kept anonymous. We do not collect any information that could be used to directly establish your identity.
-Duration Approximately 8 minutes.
-Contact information If you have questions about this research, you may contact Professor Katharina Reinecke, Paul G. Allen Center for Computer Science & Engineering, Box 352350, Seattle, WA 98195, reinecke@cs.washington.edu.
-If you have questions about your rights as a research participant, or wish to obtain information, ask questions or discuss any concerns about this study with someone other than the researcher(s), please contact the University of Washington Human Subjects Division at 206-543-0098 (for international calls include the US Calling Code: +1-206-543-0098).
-
-By checking the box, you are confirming that you are at least 18 years old and that you agree to be in the study. Be sure that questions you have about the study have been answered and that you understand what you are being asked to do. You may contact the researcher if you think of a question later. You are free to leave the experiment at any time, and refusing to be in the experiment or stopping participation will involve no penalty or loss of benefits to which you are otherwise entitled.
+What you will get out of it You will learn a few tips on how to be happier based on the Science of Happiness. At the end of the study you will be able to compare your sources of happiness to those of others.</div>
+<div>Privacy and Data Collection Your responses will be kept anonymous. We do not collect any information that could be used to directly establish your identity.
+Duration Approximately 8 minutes.</div>
+<div>Contact information If you have questions about this research, you may contact Professor Katharina Reinecke, Paul G. Allen Center for Computer Science & Engineering, Box 352350, Seattle, WA 98195, reinecke@cs.washington.edu.</div>
+<div>If you have questions about your rights as a research participant, or wish to obtain information, ask questions or discuss any concerns about this study with someone other than the researcher(s), please contact the University of Washington Human Subjects Division at 206-543-0098 (for international calls include the US Calling Code: +1-206-543-0098).</div>
+<div>By checking the box, you are confirming that you are at least 18 years old and that you agree to be in the study. Be sure that questions you have about the study have been answered and that you understand what you are being asked to do. You may contact the researcher if you think of a question later. You are free to leave the experiment at any time, and refusing to be in the experiment or stopping participation will involve no penalty or loss of benefits to which you are otherwise entitled.</div>
 <form action="/survey1/basicInfo/" method="post">{% csrf_token %}
   {{ form.non_field_errors }}
   <div class="fieldWrapper">
@@ -18,3 +21,4 @@ By checking the box, you are confirming that you are at least 18 years old and t
   </div>
   <input type="submit" value="Next">
 </form>
+</body>

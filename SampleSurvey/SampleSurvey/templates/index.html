@@ -1,7 +1,13 @@
-Welcome! This is a temporary home page. To navigate to the dog survey, add "/dogSurvey" to the url in the browser.
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'style/survey.css' %}" />
+
+<header>Lab in the Wild</header>
+<body>
+<div>Welcome! This is a temporary home page. To navigate to the dog survey, add "/dogSurvey" to the url in the browser.</div>
 <div>
   Click <a href="/dogSurvey/">Here</a> to go to the dog survey.
 </div>
 <div>
   Click <a href="/survey1/">Here</a> to go to the Lab in the Wild Survey.
 </div>
+</body>

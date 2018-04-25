@@ -1,8 +1,13 @@
-Thanks for submitting your information!
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'style/survey.css' %}" />
 
+<header>Lab in the Wild</header>
+<body>
+<div>Thanks for submitting your information!</div>
 <div>
   All Entries
   {% for entry in entries %}
 </p>Age: {{ entry.age }}, Education: {{ entry.get_education_display }}</p>
 {% endfor %}
 </div>
+</body>
