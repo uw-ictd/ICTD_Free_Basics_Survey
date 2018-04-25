@@ -8,7 +8,7 @@ from django.views.decorators.csrf import csrf_protect
 from Survey.forms import ResultsForm
 
 def home(request):
-    return render(request, "home.html", {});
+    return render(request, "index.html", {});
 
 # Rendering the survey page, which will have a results form displayed. See SampleSurvey/templates/home.html
 # to see how the form is displayed. To change the display, edit that file. Read more about forms here:
