@@ -1,3 +1,6 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'style/survey.css' %}" />
+
 Welcome to our Survey! Would you like to know what kind of puppy you are?
 <form action="/dogSurvey/results/" method="post">{% csrf_token %}
 {{ form.non_field_errors }}
