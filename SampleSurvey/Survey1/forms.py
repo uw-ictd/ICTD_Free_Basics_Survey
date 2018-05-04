@@ -5,7 +5,8 @@ from Survey1.models import Entry
 
 # Specifying which model and which fields I want to display when I use a basicInfo form
 class BasicInfoForm(forms.ModelForm):
-    age = forms.IntegerField(localize=True)
+    age = forms.IntegerField(localize=True, required=True)
+#    personalComputer = forms.BooleanField(required=True)
     class Meta:
         model = Entry
         fields = ['takenBefore', 'gender', 'age', 'education', 'glasses', 'personalComputer',] 
