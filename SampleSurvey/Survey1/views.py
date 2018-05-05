@@ -48,3 +48,6 @@ def results(request, id):
 def selection(request):
     form = SelectionForm()
     return render(request, "selection.html", {"form": form})
+
+def image(request):
+    return render(request, "image.html", {})
