@@ -2,10 +2,10 @@
 from __future__ import unicode_literals
 from django.template.loader import get_template
 from django.shortcuts import render
-from Survey1.models import Entry
+from Survey1.models import Entry, Data
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_protect
-from Survey1.forms import BasicInfoForm, ConfirmationForm
+from Survey1.forms import BasicInfoForm, ConfirmationForm, SelectionForm
 
 def survey1(request):
     return render(request, "survey1.html", {})
@@ -44,3 +44,7 @@ def results(request, id):
             print("Invalid form, not saved")
     entries = Entry.objects.all()
     return render(request, "survey1Results.html", {'entries': entries})
+
+def selection(request):
+    form = SelectionForm()
+    return render(request, "selection.html", {"form": form})

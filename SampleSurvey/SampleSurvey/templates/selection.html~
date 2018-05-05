@@ -1,0 +1,17 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'style/survey.css' %}" />
+
+<header>Lab in the Wild</header>
+
+<body>
+Selection Page
+<form action="/survey1/results/" method="post">{% csrf_token %}
+{{ form.non_field_errors }}
+<div class="fieldWrapper">
+  {{ form.option1.errors }}
+  <label for="{{ form.option1.id_for_label }}">Make a selection</label>
+  {{ form.option1 }}
+</div>
+<input type="submit" value="Next">
+</form>
+</body>

@@ -17,3 +17,9 @@ class Entry(models.Model):
 
     # For confirmation form
     confirmation = models.BooleanField()
+
+class Data(models.Model):
+    CHOICES = (('1', '1 - Not colorful at all'), ('2', '2'), ('3', '3'), ('4', '4'), ('5', '5'), ('6', '6'),
+               ('7', '7'), ('8', '8'), ('9', '9'), ('10', '10 - Very colorful'),) 
+    answer = models.PositiveSmallIntegerField(choices=CHOICES)
+    userId = models.IntegerField()

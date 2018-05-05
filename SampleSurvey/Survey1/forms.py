@@ -1,7 +1,7 @@
 from django import forms
 from django.core.exceptions import ValidationError
 from django.utils.translation import ugettext_lazy as _
-from Survey1.models import Entry
+from Survey1.models import Entry, Data
 
 # Specifying which model and which fields I want to display when I use a basicInfo form
 class BasicInfoForm(forms.ModelForm):
@@ -16,3 +16,8 @@ class ConfirmationForm(forms.ModelForm):
     class Meta:
         model = Entry
         fields = ['confirmation',]
+
+class SelectionForm(forms.ModelForm):
+    class Meta:
+        model = Data
+        fields = ['answer',]
