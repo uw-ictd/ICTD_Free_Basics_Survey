@@ -45,9 +45,17 @@ def results(request, id):
     entries = Entry.objects.all()
     return render(request, "survey1Results.html", {'entries': entries})
 
-def selection(request):
+def selection(request, id):
     form = SelectionForm()
     return render(request, "selection.html", {"form": form})
 
 def image(request):
-    return render(request, "image.html", {})
+    #if (request.method == 'POST'):
+        #form = SelectionForm(request.POST, instance=entry)
+        #if (form.is_valid()):
+            #res = form.save()
+            #print("Saved answers with id {0}".format(res.id,))
+        #else:
+            #print("Invalid form, not saved")
+    id = 1 # Use this field when we have a bunch of images
+    return render(request, "image.html", {"id":id})
