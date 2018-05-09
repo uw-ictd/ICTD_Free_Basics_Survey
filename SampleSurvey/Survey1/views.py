@@ -42,7 +42,8 @@ def start(request, id):
             print("Saved answers with id {0}".format(res.id,))
         else:
             print("Invalid form, not saved")
-    return render(request, "start.html")
+    url = "/survey1/question/0/0/"
+    return render(request, "start.html", {"url":url})
 
 # Not used for survey 1
 def selection(request, id):
@@ -53,7 +54,7 @@ def image(request):
     return render(request, "image.html", {"id":id})
 
 def question(request, prevId, qId):
-    if (request.method == 'POST'): # TODO add check for when this is the first time through
+    if (request.method == 'POST' and prevId=="0" and qId=="0"):
         prev = Question.objects.get(pk=int(prevId))
         form = QuestionForm(request.POST, instance=prev)
         if (form.is_valid()):
