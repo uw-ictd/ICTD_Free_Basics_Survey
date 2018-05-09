@@ -5,7 +5,7 @@
 <body>
 <div>Please tell us a bit about yourself.</div>
 <div>We need this information for data analysis. Please note that none of the answers are personally identifiable. LabintheWild takes your privacy very seriously.</div>
-<form action="/survey1/results/{{entry.id}}/" method="post">{% csrf_token %}
+<form action="/survey1/start/{{entry.id}}/" method="post">{% csrf_token %}
   {{ form.non_field_errors }}
   <div class="fieldWrapper">
     {{ form.takenBefore.errors }}

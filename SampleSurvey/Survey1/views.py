@@ -33,8 +33,7 @@ def basicInfo(request):
     form = BasicInfoForm()
     return render(request, "basicInfo.html", {"form": form, "entry": res,})
 
-def results(request, id):
-    # Should be called after basicInfo. Adding info to database
+def start(request, id):
     entry = Entry.objects.get(pk=int(id))
     if (request.method == 'POST'):
         form = BasicInfoForm(request.POST, instance=entry)
@@ -43,13 +42,12 @@ def results(request, id):
             print("Saved answers with id {0}".format(res.id,))
         else:
             print("Invalid form, not saved")
-    entries = Entry.objects.all()
-    return render(request, "survey1Results.html", {'entries': entries})
+    return render(request, "start.html")
 
+# Not used for survey 1
 def selection(request, id):
     form = SelectionForm()
     return render(request, "selection.html", {"form": form})
-
 def image(request):
     id = 1 # Use this field when we have a bunch of images
     return render(request, "image.html", {"id":id})

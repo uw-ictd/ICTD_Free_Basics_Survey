@@ -13,7 +13,7 @@ class Entry(models.Model):
     age = models.PositiveSmallIntegerField(null=True)
     education = models.CharField(max_length=20, choices=EDUCATION, default='')
     glasses = models.CharField(max_length=3, choices=YES_NO, default='')
-    personalComputer = models.BooleanField()
+    personalComputer = models.NullBooleanField(null=False)
 
     # For confirmation form
     confirmation = models.BooleanField()
