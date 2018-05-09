@@ -79,7 +79,7 @@ select_survey4 {
 
 /* Serves navigation bar on homepage */
 .nav {
-    background-color: #595959;
+    background-color:lightblue;
     color: #ffffff;
     list-style: none;
     text-align: center;
@@ -95,10 +95,10 @@ select_survey4 {
 /* Serves navigation bar on homepage */
 .nav > li > a {
     text-decoration: none;
-    color: #ffffff;
+    color: #777;
 }
 
 /* Serves navigation bar on homepage */
 .nav > li > a:hover {
-    color: #c1c1c1;
+    color: #000000;
 }
