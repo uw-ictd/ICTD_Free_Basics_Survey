@@ -8,4 +8,5 @@ urlpatterns = [ url(r'^$', views.survey1, name='survey1'),
                 url(r'results/(\d+)/', views.results, name='results'),
                 url(r'image/selection/(\d+)/', views.selection, name='selection'),
                 url(r'image/', views.image, name='image'),
+                url(r'question/(\d+)/', views.question, name='question'),
 ]

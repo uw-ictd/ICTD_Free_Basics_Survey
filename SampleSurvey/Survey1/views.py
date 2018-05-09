@@ -2,10 +2,10 @@
 from __future__ import unicode_literals
 from django.template.loader import get_template
 from django.shortcuts import render
-from Survey1.models import Entry, Data
+from Survey1.models import Entry, Data, Question
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_protect
-from Survey1.forms import BasicInfoForm, ConfirmationForm, SelectionForm
+from Survey1.forms import BasicInfoForm, ConfirmationForm, SelectionForm, QuestionForm
 
 def survey1(request):
     return render(request, "survey1.html", {})
@@ -50,12 +50,23 @@ def selection(request, id):
     return render(request, "selection.html", {"form": form})
 
 def image(request):
-    #if (request.method == 'POST'):
-        #form = SelectionForm(request.POST, instance=entry)
-        #if (form.is_valid()):
-            #res = form.save()
-            #print("Saved answers with id {0}".format(res.id,))
-        #else:
-            #print("Invalid form, not saved")
     id = 1 # Use this field when we have a bunch of images
     return render(request, "image.html", {"id":id})
+
+def question(request, prevId):
+    next = Question()
+    next.save()
+    nextId = next.id
+    if (request.method == 'POST' and prevId != "0"):
+        prev = Question.objects.get(pk=int(prevId))
+        form = QuestionForm(request.POST, instance=prev)
+        if (form.is_valid()):
+            res = form.save()
+            print("Saved answers with id {0}".format(res.id,))
+        else:
+            print("Invalid form, not saved")    
+    q = QuestionForm(instance=next)
+    url = "/survey1/question/{0}/".format(nextId,)
+    print("{0}".format(url,))
+    #TODO use nextId to determine what question will be displayed next
+    return render(request, "question.html", {"form":q, "url":url})

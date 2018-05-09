@@ -23,3 +23,6 @@ class Data(models.Model):
                ('7', '7'), ('8', '8'), ('9', '9'), ('10', '10 - Very colorful'),) 
     answer = models.PositiveSmallIntegerField(choices=CHOICES)
     userId = models.IntegerField()
+
+class Question(models.Model):
+    answer = models.CharField(max_length=10, default='')
