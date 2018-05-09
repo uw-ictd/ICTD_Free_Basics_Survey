@@ -3,7 +3,10 @@
 
 <header>Lab in the Wild</header>
 <body>
-Question page
+<div>{{ question.q }}</div>
+<div>{{ question.1 }}</div>
+<div>{{ question.2 }}</div>
+<div>{{ question.3 }}</div>
 <form action="{{url}}" method="post">{% csrf_token %}
   {{ form.non_field_errors }}
   <div class="fieldWrapper">

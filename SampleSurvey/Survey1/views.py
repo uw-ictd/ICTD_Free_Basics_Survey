@@ -6,6 +6,7 @@ from Survey1.models import Entry, Data, Question
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_protect
 from Survey1.forms import BasicInfoForm, ConfirmationForm, SelectionForm, QuestionForm
+from Survey1.questions import AllQuestions
 
 def survey1(request):
     return render(request, "survey1.html", {})
@@ -53,11 +54,8 @@ def image(request):
     id = 1 # Use this field when we have a bunch of images
     return render(request, "image.html", {"id":id})
 
-def question(request, prevId):
-    next = Question()
-    next.save()
-    nextId = next.id
-    if (request.method == 'POST' and prevId != "0"):
+def question(request, prevId, qId):
+    if (request.method == 'POST'): # TODO add check for when this is the first time through
         prev = Question.objects.get(pk=int(prevId))
         form = QuestionForm(request.POST, instance=prev)
         if (form.is_valid()):
@@ -65,8 +63,13 @@ def question(request, prevId):
             print("Saved answers with id {0}".format(res.id,))
         else:
             print("Invalid form, not saved")    
+    if (int(qId) == AllQuestions().numQuestions()):
+        # Finished last question, render end page
+        return render(request, "survey1Results.html")
+    next = Question()
+    next.save()
+    nextId = next.id
     q = QuestionForm(instance=next)
-    url = "/survey1/question/{0}/".format(nextId,)
-    print("{0}".format(url,))
-    #TODO use nextId to determine what question will be displayed next
-    return render(request, "question.html", {"form":q, "url":url})
+    url = "/survey1/question/{0}/{1}/".format(nextId, (int(qId) + 1))
+    ques = AllQuestions().getQuestion(int(qId) + 1)
+    return render(request, "question.html", {"question":ques, "form":q, "url":url})
