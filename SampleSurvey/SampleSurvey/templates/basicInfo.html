@@ -3,39 +3,34 @@
 
 <header>Lab in the Wild</header>
 <body>
-<div>Please tell us a bit about yourself.</div>
-<div>We need this information for data analysis. Please note that none of the answers are personally identifiable. LabintheWild takes your privacy very seriously.</div>
+<div>Before we get started, we have a quick question for you:</div>
+<div>To what extent are you participating in an experiment on LabintheWild for the following reasons?</div>
 <form action="/survey1/start/{{entry.id}}/" method="post">{% csrf_token %}
   {{ form.non_field_errors }}
   <div class="fieldWrapper">
-    {{ form.takenBefore.errors }}
-    <label for="{{ form.takenBefore.id_for_label }}">Have you taken this test before?</label>
-    {{ form.takenBefore }}
+    {{ form.learn.errors }}
+    <label for="{{ form.learn.id_for_label }}">I want to learn about myself</label>
+    {{ form.learn }}
   </div>
   <div class="fieldWrapper">
-    {{ form.gender.errors }}
-    <label for="{{ form.gender.id_for_label }}">What is your gender?</label>
-    {{ form.gender }}
+    {{ form.fun.errors }}
+    <label for="{{ form.fun.id_for_label }}">For fun</label>
+    {{ form.fun }}
   </div>
   <div class="fieldWrapper">
-    {{ form.age.errors }}
-    <label for="{{ form.age.id_for_label }}">How old are you? (Please type a number)</label>
-    {{ form.age }}
+    {{ form.bored.errors }}
+    <label for="{{ form.bored.id_for_label }}">I am bored</label>
+    {{ form.bored }}
   </div>
   <div class="fieldWrapper">
-    {{ form.education.errors }}
-    <label for="{{ form.education.id_for_label }}">What is the highest level of education you have recieved or are pursuing?</label>
-    {{ form.education }}
+    {{ form.science.errors }}
+    <label for="{{ form.science.id_for_label }}">I want to help science</label>
+    {{ form.science }}
   </div>
   <div class="fieldWrapper">
-    {{ form.glasses.errors }}
-    <label for="{{ form.glasses.id_for_label }}">Do you wear glasses or contacts?</label>
-    {{ form.glasses }}
-  </div>
-  <div class="fieldWrapper">
-    {{ form.personalComputer.errors }}
-    <label for="{{ form.personalComputer.id_for_label }}">Are you on a personal computer?</label>
-    {{ form.personalComputer }}
+    {{ form.compare.errors }}
+    <label for="{{ form.compare.id_for_label }}">I want to compare myself to others</label>
+    {{ form.compare }}
   </div>
   <input type="submit" value="Next">
 </form>

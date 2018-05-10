@@ -9,7 +9,7 @@ class BasicInfoForm(forms.ModelForm):
 #    personalComputer = forms.BooleanField(required=True)
     class Meta:
         model = Entry
-        fields = ['takenBefore', 'gender', 'age', 'education', 'glasses', 'personalComputer',] 
+        fields = ['learn', 'fun', 'bored', 'science', 'compare', ] 
 
 class ConfirmationForm(forms.ModelForm):
     confirmation = forms.BooleanField(required=True)
