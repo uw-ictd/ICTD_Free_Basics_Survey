@@ -25,4 +25,4 @@ class SelectionForm(forms.ModelForm):
 class QuestionForm(forms.ModelForm):
     class Meta:
         model = Question
-        fields = ['answer',]
+        fields = ['word1', 'word2']

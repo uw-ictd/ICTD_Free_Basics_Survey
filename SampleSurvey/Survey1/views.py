@@ -60,12 +60,15 @@ def question(request, prevId, qId):
         # Normal case, this is not the first question so we must save the previous question
         prev = Question.objects.get(pk=int(prevId))
         form = QuestionForm(request.POST, instance=prev)
-        if (form.is_valid()):
+        if (form.is_valid() and prev.word1 != prev.word2):
             res = form.save()
             print("Saved answers with id {0}, userId {1}, and questionId {2}".format(res.id,
                                                                                      res.userId, res.questionId))
         else:
-            print("Invalid form, not saved")
+            print("Invalid form, not saved, re-rendering page")
+            url = "/survey1/question/{0}/{1}/".format(prevId, qId)
+            ques = AllQuestions().getQuestion(int(qId))
+            return render(request, "question.html", {"question":ques, "form":form, "url":url})
         if (int(qId) == AllQuestions().numQuestions()):
             # Finished last question, render end page
             return render(request, "survey1Results.html")

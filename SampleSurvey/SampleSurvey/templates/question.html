@@ -4,15 +4,15 @@
 <header>Lab in the Wild</header>
 <body>
 <div>{{ question.q }}</div>
-<div>{{ question.1 }}</div>
-<div>{{ question.2 }}</div>
-<div>{{ question.3 }}</div>
+<div>A) {{ question.1 }}</div>
+<div>B) {{ question.2 }}</div>
+<div>C) {{ question.3 }}</div>
 <form action="{{url}}" method="post">{% csrf_token %}
   {{ form.non_field_errors }}
   <div class="fieldWrapper">
     {{ form.answer.errors }}
     <label for="{{ form.answer.id_for_label }}">Answer:</label>
-    {{ form.answer }}
+    {{ form.word1 }} and {{ form.word2 }}
   </div>
   <input type="submit" value="Next">
 </form>

@@ -25,7 +25,9 @@ class Data(models.Model):
     userId = models.IntegerField()
 
 class Question(models.Model):
-    answer = models.CharField(max_length=10, default='')
+    CHOICES = ((None, ''), ('a', 'A'), ('b', 'B'), ('c', 'C'),)
+    word1 = models.CharField(max_length=1, default='', choices=CHOICES)
+    word2 = models.CharField(max_length=1, default='', choices=CHOICES)
     userId = models.IntegerField()
     questionId = models.IntegerField()
     
