@@ -7,6 +7,7 @@ from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_protect
 from Survey1.forms import BasicInfoForm, ConfirmationForm, SelectionForm, QuestionForm
 from Survey1.questions import AllQuestions
+import sys
 
 def survey1(request):
     return render(request, "survey1.html", {})
@@ -42,7 +43,7 @@ def start(request, id):
             print("Saved answers with id {0}".format(res.id,))
         else:
             print("Invalid form, not saved")
-    url = "/survey1/question/0/0/"
+    url = "/survey1/question/{0}/{1}/".format(id, sys.maxsize)
     return render(request, "start.html", {"url":url})
 
 # Not used for survey 1
@@ -53,22 +54,41 @@ def image(request):
     id = 1 # Use this field when we have a bunch of images
     return render(request, "image.html", {"id":id})
 
+# Note that the userId for a Question model corresponds to the pk of the Entry object in the database
 def question(request, prevId, qId):
-    if (request.method == 'POST' and prevId=="0" and qId=="0"):
+    if (request.method == 'POST' and int(qId)!=sys.maxsize):
+        # Normal case, this is not the first question so we must save the previous question
         prev = Question.objects.get(pk=int(prevId))
         form = QuestionForm(request.POST, instance=prev)
         if (form.is_valid()):
             res = form.save()
-            print("Saved answers with id {0}".format(res.id,))
+            print("Saved answers with id {0}, userId {1}, and questionId {2}".format(res.id,
+                                                                                     res.userId, res.questionId))
         else:
-            print("Invalid form, not saved")    
-    if (int(qId) == AllQuestions().numQuestions()):
-        # Finished last question, render end page
-        return render(request, "survey1Results.html")
-    next = Question()
-    next.save()
-    nextId = next.id
-    q = QuestionForm(instance=next)
-    url = "/survey1/question/{0}/{1}/".format(nextId, (int(qId) + 1))
-    ques = AllQuestions().getQuestion(int(qId) + 1)
-    return render(request, "question.html", {"question":ques, "form":q, "url":url})
+            print("Invalid form, not saved")
+        if (int(qId) == AllQuestions().numQuestions()):
+            # Finished last question, render end page
+            return render(request, "survey1Results.html")
+        else:
+            # render the next question
+            next = Question()
+            next.userId = prev.userId
+            next.questionId = int(qId) + 1
+            next.save()
+            nextId = next.id
+            q = QuestionForm(instance=next)
+            url = "/survey1/question/{0}/{1}/".format(nextId, (int(qId) + 1))
+            ques = AllQuestions().getQuestion(int(qId) + 1)
+            return render(request, "question.html", {"question":ques, "form":q, "url":url})
+    else:
+        # This is the first question, there are no previous questions to save
+        next = Question()
+        next.userId = int(prevId)
+        next.questionId = 1
+        next.save()
+        nextId = next.id
+        q = QuestionForm(instance=next)
+        url = "/survey1/question/{0}/{1}/".format(nextId, 1)
+        ques = AllQuestions().getQuestion(1)
+        return render(request, "question.html", {"question":ques, "form":q, "url":url})
+

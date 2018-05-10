@@ -26,3 +26,6 @@ class Data(models.Model):
 
 class Question(models.Model):
     answer = models.CharField(max_length=10, default='')
+    userId = models.IntegerField()
+    questionId = models.IntegerField()
+    
