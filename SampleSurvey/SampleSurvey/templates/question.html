@@ -4,9 +4,11 @@
 <header>Lab in the Wild</header>
 <body>
 <div>{{ question.q }}</div>
-<div>A) {{ question.1 }}</div>
-<div>B) {{ question.2 }}</div>
-<div>C) {{ question.3 }}</div>
+<answer_grid>
+<answer1>A) {{ question.1 }}</answer1>
+<answer2>B) {{ question.2 }}</answer2>
+<answer3>C) {{ question.3 }}</answer3>
+</answer_grid>
 <form action="{{url}}" method="post">{% csrf_token %}
   {{ form.non_field_errors }}
   <div class="fieldWrapper">

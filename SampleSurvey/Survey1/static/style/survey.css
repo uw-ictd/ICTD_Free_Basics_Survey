@@ -102,3 +102,47 @@ select_survey4 {
 .nav > li > a:hover {
     color: #000000;
 }
+
+/* Answer selection on question page */
+answer_grid {
+    display:grid;
+    grid-row-gap:20px;
+    grid-column-gap:20px;
+    height:auto;
+}
+
+answer1 {
+    width:auto;
+    height:auto;
+    padding:20px;
+    background-color:lightblue;
+    grid-column-start:1;
+    grid-column-end:2;
+    grid-row-start:1;
+    grid-row-end:2;
+    border-style:outset;
+}
+
+answer2 {
+    width:auto;
+    height:auto;
+    padding:20px;
+    background-color:lightblue;
+    grid-column-start:2;
+    grid-column-end:3;
+    gird-row-start:1;
+    grid-row-end:2;
+    border-style:outset;
+}
+
+answer3 {
+    width:auto;
+    height:auto;
+    padding:20px;
+    background-color:lightblue;
+    grid-column-start:3;
+    grid-column-end:4;
+    grid-row-start:1;
+    grid-row-end:2;
+    border-style:outset;
+}
