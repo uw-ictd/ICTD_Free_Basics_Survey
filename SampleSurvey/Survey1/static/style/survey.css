@@ -8,7 +8,7 @@ body {
     */
     /* More aesthetically pleasing when these two lines are removed
     border: 10px solid lightblue;
-    boarder-radius: 5px;
+    boarder-radius: 5px; /* Typo: border-radius */
     */
 }
 
