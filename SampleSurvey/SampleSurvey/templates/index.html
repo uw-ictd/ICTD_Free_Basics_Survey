@@ -1,6 +1,18 @@
 {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'style/survey.css' %}" />
 
+<!DOCTYPE html> <!-- Temp, declaring DOCTYPE for bootstrap -->
+<html lang="en"> <!-- Temp, for bootstrap -->
+<meta charset="utf-8"> <!-- Temp, for bootstrap -->
+
+<!-- Centers page for mobile adaptability, "centers website on screens wider than 500px" -->
+<style>
+.content {
+   max-width: 500px;
+   margin: auto;
+}
+</style>
+
 <header>Lab in the Wild</header>
 <body>
    <ul class = "nav"> <!-- NAVBAR Integration in <ul> -->
@@ -24,3 +36,5 @@
     </select_survey4>
 </survey_grid>
 </body>
+
+</html> <!-- Temp, for bootstrap -->
