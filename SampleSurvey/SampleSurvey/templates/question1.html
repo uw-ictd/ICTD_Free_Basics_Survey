@@ -1,0 +1,25 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'style/survey.css' %}" />
+
+<header>Lab in the Wild</header>
+<body>
+<div>{{ question.q }}</div>
+<form action="{{url}}" method="post">{% csrf_token %}
+  {{ form.non_field_errors }}
+<answer_grid>
+<answer1>A) {{ question.1 }}</answer1>
+  <div class="fieldWrapper">
+    {{ form.A }}
+  </div>
+<answer2>B) {{ question.2 }}</answer2>
+  <div class="fieldWrapper">
+    {{ form.B }}
+  </div>
+<answer3>C) {{ question.3 }}</answer3>
+  <div class="fieldWrapper">
+    {{ form.C }}
+  </div>
+</answer_grid>
+  <input type="submit" value="Next">
+</form>
+</body>

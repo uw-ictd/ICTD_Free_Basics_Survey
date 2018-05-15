@@ -26,4 +26,11 @@ class Question(models.Model):
     word2 = models.CharField(max_length=1, default='', choices=CHOICES)
     userId = models.IntegerField()
     questionId = models.IntegerField()
+
+class Question1(models.Model):
+    A = models.BooleanField(null=False, default=False)
+    B = models.BooleanField(null=False, default=False)
+    C = models.BooleanField(null=False, default=False)
+    userId = models.IntegerField()
+    questionId = models.IntegerField()
     

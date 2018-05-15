@@ -10,4 +10,5 @@ urlpatterns = [ url(r'^$', views.survey1, name='survey1'),
                 url(r'image/', views.image, name='image'),
                 url(r'start/(\d+)/', views.start, name='start'),
                 url(r'question/(\d+)/(\d+)/', views.question, name='question'),
+                url(r'question1/(\d+)/(\d+)/', views.question1, name='question1'),
 ]
