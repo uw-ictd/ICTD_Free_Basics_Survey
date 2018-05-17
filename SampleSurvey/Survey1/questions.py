@@ -1,3 +1,5 @@
+#This class holds the questions that are to be asked in the survey
+
 class AllQuestions:
     allQuestions = {
         1:{'q':'This is Question 1', '1':'This is option 1', '2':'This is option 2', '3':'This is option 3'},

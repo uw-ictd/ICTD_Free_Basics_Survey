@@ -7,6 +7,10 @@ from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_protect
 from Survey.forms import ResultsForm
 
+# These are the handlers for the various urls associated with the dog survey. To see which urls call
+#which function, see the urls.py file in this directory.
+
+# Renders the home page
 def home(request):
     return render(request, "index.html", {});
 

@@ -9,6 +9,11 @@ from Survey1.forms import BasicInfoForm, ConfirmationForm, SelectionForm, Questi
 from Survey1.questions import AllQuestions
 import sys
 
+# These functions are called when the corresponding urls are accessed. The request parameter
+# is the Http get or post message and any subsequent parameters are integers corresponding to
+# what is listed in the url (see Survey1/urls.py).
+
+# Rendering the survey1 home page
 def survey1(request):
     return render(request, "survey1.html", {})
 
@@ -34,6 +39,7 @@ def basicInfo(request):
     form = BasicInfoForm()
     return render(request, "basicInfo.html", {"form": form, "entry": res,})
 
+# Rendering the start page, which contains directions for how to take the survey.
 def start(request, id):
     entry = Entry.objects.get(pk=int(id))
     if (request.method == 'POST'):
@@ -45,16 +51,20 @@ def start(request, id):
             print("Invalid form, not saved")
     url = "/survey1/question/{0}/{1}/".format(id, sys.maxsize)
     url1 = "/survey1/question1/{0}/{1}/".format(id, sys.maxsize)
-    return render(request, "start.html", {"url":url, "url1":url1})
+    url2 = "/survey1/image/"
+    return render(request, "start.html", {"url":url, "url1":url1, "url2":url2})
 
-# Not used for survey 1
+# Rendering the selection page so the user can choose a response for the previous image
 def selection(request, id):
     form = SelectionForm()
     return render(request, "selection.html", {"form": form})
+
+# Rendering an image for the user to respond to
 def image(request):
     id = 1 # Use this field when we have a bunch of images
     return render(request, "image.html", {"id":id})
 
+# Rendering a question for the user to respond to
 # Note that the userId for a Question model corresponds to the pk of the Entry object in the database
 def question(request, prevId, qId):
     if (request.method == 'POST' and int(qId)!=sys.maxsize):
@@ -97,14 +107,14 @@ def question(request, prevId, qId):
         return render(request, "question.html", {"question":ques, "form":q, "url":url})
 
 
-# Same as question callback but replacing question with question1 to demonstrate a different form of data entry
+# Same as question handler, but replacing question with question1 to demonstrate a different form of data entry
 def question1(request, prevId, qId):
     if (request.method == 'POST' and int(qId)!=sys.maxsize):
         # Normal case, this is not the first question so we must save the previous question
         prev = Question1.objects.get(pk=int(prevId))
         form = Question1Form(request.POST, instance=prev)
         res = form.save()
-        numAnswers = 0
+        numAnswers = 0 # User should select exactly 2 answers as true
         if prev.A == True:
             numAnswers = numAnswers + 1
         if prev.B == True:

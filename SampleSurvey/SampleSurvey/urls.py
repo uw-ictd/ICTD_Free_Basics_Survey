@@ -16,6 +16,10 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 
+# Url patterns for the main parts of the site: the home page ("^" = no url
+# extensions), the dog survey, and survey1. the dog survey and survey1 both
+# have sub-urls but those are defined in the urls.py files in the respective
+# subdirectories
 urlpatterns = [
     url(r'^', include('Survey.urls')),
     url(r'^survey1/', include('Survey1.urls')),
