@@ -1,11 +1,9 @@
 {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'style/survey.css' %}" />
-<!DOCTYPE html> <!-- Temp, declaring DOCTYPE for bootstrap -->
+<!DOCTYPE html>             <!-- Temp, declaring DOCTYPE for bootstrap -->
 <html lang="en">
-<!-- Temp, for bootstrap -->
-<meta charset="utf-8">
-<!-- Temp, for bootstrap -->
-<title>LabintheWild</title>
+<meta charset="utf-8">      <!-- Temp for bootstrap -->
+<title>LabintheWild</title> <!-- Temp for bootstrap -->
 <!-- Centers page for mobile adaptability, "centers website on screens wider than 500px" -->
 <style>
       .content {
@@ -13,16 +11,15 @@
       margin: auto;
       }
 </style>
-<header>Lab in the Wild</header>
+<header>Lab in the Wild</header> <!-- Website title -->
 <body>
 <ul class = "nav">
-    <!-- NAVBAR Integration in <ul> -->
+    <!-- NAVBAR Integration in <ul>, links not working -->
     <li><a href="/survey1/index/">Home</a></li>
     <li><a href="/survey1/aboutUs/">About Us</a></li>
-    <!-- Links are not working yet -->
 </ul>
 <div>Welcome! Lab in the Wild is a research group out of the University of Washington. We test your abilities and preferences. At the end of each experiment, you will see a page with your personalized feedback, which lets you compare yourself and your performance to other people around the world.</div>
-<div>By participating, you contribute to research on people's similarities and differences and help improve users' experience when interacting with technology. We believe that research should be done in collaboration with people—people like you from all over the world who are interested in learning about themselves and helping research. With your help, we can, for example, compare the website preferences of people from different countries, or analyze what user interfaces should look like if optimized for the mouse interaction abilities of certain age groups.</div>
+<div>By participating, you contribute to research on people's similarities and differences and help improve users' experience when interacting with technology. We believe that research should be done in collaboration with people—-people like you from all over the world who are interested in learning about themselves and helping research. With your help, we can, for example, compare the website preferences of people from different countries, or analyze what user interfaces should look like if optimized for the mouse interaction abilities of certain age groups.</div>
 <survey_grid>
     <select_survey1>
         Click <a href="/dogSurvey">Here</a> to go to the dog survey.
@@ -38,31 +35,25 @@
     </select_survey4>
 </survey_grid>
 </body>
-<!-- Footer below -->
+<!-- Footer below (requires improvement) -->
 <footer id="footer">
     <div class="inner">
         <section>
             <h2>Get in touch</h2>
-            <form method="post" action="#">
-                <div class="field half
-            first">
-                    <input type="te
-               xt" name="name" id="name" placeholder="Name" />
-                </div>
-                <div class="field half"
-                >
-                    <input type="em
-               ail" name="email" id="email" placeholder="Email" />
-                </div>
-                <div class="field">
-            <textarea name=
-                              "message" id="message" placeholder="Message"></textarea>
-                </div>
-                <ul class="actions">
-                    <li><input type
-                                       ="submit" value="Send" class="special" /></li>
-                </ul>
-            </form>
-        </section>
+               <form method="post" action="#">
+                  <div class="field half first">
+                     <input type="text" name="name" id="name" placeholder="Name" />
+                  </div>
+                  <div class="field half">
+                     <input type="email" name="email" id="email" placeholder="Email" />
+                  </div>
+                  <div class="field">
+                     <textarea name="message" id="message" placeholder="Message"></textarea>
+                  </div>
+                  <ul class="actions">
+                     <li><input type="submit" value="Send" class="special" /></li>
+                  </ul>
+               </form>
+    </section>
 </html>
 <!-- Temp, for bootstrap -->
