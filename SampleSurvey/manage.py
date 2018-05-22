@@ -1,4 +1,7 @@
 #!/usr/bin/env python
+# This file, when navigated to with Python installed in a Linux terminal,
+# hosts the website on localhost by running the command
+# "python manage.py runserver".
 import os
 import sys
 
